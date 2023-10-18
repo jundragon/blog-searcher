@@ -8,13 +8,11 @@ import org.jundragon.blog.mock.FakeBlogStatisticRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
 class BlogStatisticCommandServiceTest {
 
     BlogStatisticCommandService blogStatisticCommandService;
 
-    @Mock
     BlogStatisticRepository blogStatisticRepository = new FakeBlogStatisticRepository();
 
     @BeforeEach
@@ -60,5 +58,7 @@ class BlogStatisticCommandServiceTest {
         Assertions.assertEquals(true, byKeyword.isPresent());
         Assertions.assertEquals(1, byKeyword.get().getCount());
     }
+
+    // 10 개 이상 조회는 되지 않는다 (bean validation 에서 검증해도 될듯)
 
 }

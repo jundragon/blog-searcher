@@ -26,9 +26,9 @@ public class FakeBlogStatisticRepository implements BlogStatisticRepository {
     }
 
     @Override
-    public List<BlogKeywordCount> findByKeywordOrderByCountDescTop(Long top) {
+    public List<BlogKeywordCount> getKeywordOrderByCountDescTop(Long top) {
         return data.stream()
-            .sorted(Comparator.comparing(BlogKeywordCount::getCount))
+            .sorted(Comparator.comparing(BlogKeywordCount::getCount).reversed())
             .limit(top)
             .collect(Collectors.toList());
     }
