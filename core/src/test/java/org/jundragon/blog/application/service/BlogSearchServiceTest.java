@@ -10,6 +10,7 @@ import org.jundragon.blog.application.port.out.BlogSource;
 import org.jundragon.blog.application.port.out.BlogSourceRequest;
 import org.jundragon.blog.domain.Blog;
 import org.jundragon.blog.domain.BlogDocument;
+import org.jundragon.blog.domain.BlogSearchSortType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,12 +23,16 @@ class BlogSearchServiceTest {
 
     @Mock
     BlogSource blogSource;
+
+    @Mock
+    BlogStatisticService blogStatisticService;
     BlogSearchService blogSearchService;
 
     @BeforeEach
     void init() {
         this.blogSearchService = BlogSearchService.builder()
             .blogSource(blogSource)
+            .blogStatisticService(blogStatisticService)
             .build();
     }
 
@@ -52,6 +57,7 @@ class BlogSearchServiceTest {
 
         var command = BlogSearchCommand.builder()
             .keyword("카카오뱅크")
+            .sortType(BlogSearchSortType.ACCURACY)
             .build();
 
         // when
