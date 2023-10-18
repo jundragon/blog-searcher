@@ -4,9 +4,12 @@ plugins {
 
 group 'org.jundragon'
 version '1.0-SNAPSHOT'
+sourceCompatibility = '17'
 
-repositories {
-    mavenCentral()
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 dependencies {
@@ -16,4 +19,8 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jar {
+    enabled = false
 }
