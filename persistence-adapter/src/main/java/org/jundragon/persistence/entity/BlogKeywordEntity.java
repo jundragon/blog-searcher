@@ -9,7 +9,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.jundragon.blog.domain.BlogKeyword;
+import org.jundragon.core.blog.domain.BlogKeyword;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

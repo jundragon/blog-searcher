@@ -1,4 +1,4 @@
-package org.jundragon.blog.domain;
+package org.jundragon.core.blog.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

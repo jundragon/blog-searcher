@@ -1,4 +1,4 @@
-package org.jundragon.common.annotation;
+package org.jundragon.core.common.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

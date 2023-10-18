@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
-import org.jundragon.blog.application.port.out.BlogStatisticRepository;
-import org.jundragon.blog.domain.BlogKeyword;
+import org.jundragon.core.blog.application.port.out.BlogStatisticRepository;
+import org.jundragon.core.blog.domain.BlogKeyword;
 import org.jundragon.persistence.entity.BlogKeywordEntity;
 import org.springframework.stereotype.Component;
 

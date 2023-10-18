@@ -1,10 +1,10 @@
-package org.jundragon.blog.application.service;
+package org.jundragon.core.blog.application.service;
 
 import java.util.Optional;
-import org.jundragon.blog.application.port.in.IncreaseKeywordCountCommand;
-import org.jundragon.blog.application.port.out.BlogStatisticRepository;
-import org.jundragon.blog.domain.BlogKeyword;
-import org.jundragon.blog.mock.FakeBlogStatisticRepository;
+import org.jundragon.core.blog.application.port.in.IncreaseKeywordCountCommand;
+import org.jundragon.core.blog.application.port.out.BlogStatisticRepository;
+import org.jundragon.core.blog.domain.BlogKeyword;
+import org.jundragon.core.mock.FakeBlogStatisticRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

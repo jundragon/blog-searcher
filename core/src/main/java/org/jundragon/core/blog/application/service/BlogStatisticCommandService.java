@@ -1,11 +1,11 @@
-package org.jundragon.blog.application.service;
+package org.jundragon.core.blog.application.service;
 
 import java.util.Optional;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
-import org.jundragon.blog.application.port.in.IncreaseKeywordCountCommand;
-import org.jundragon.blog.application.port.out.BlogStatisticRepository;
-import org.jundragon.blog.domain.BlogKeyword;
+import org.jundragon.core.blog.application.port.in.IncreaseKeywordCountCommand;
+import org.jundragon.core.blog.application.port.out.BlogStatisticRepository;
+import org.jundragon.core.blog.domain.BlogKeyword;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,14 +1,14 @@
-package org.jundragon.blog.application.service;
+package org.jundragon.core.blog.application.service;
 
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
-import org.jundragon.blog.application.port.in.BlogSearchCommand;
-import org.jundragon.blog.application.port.in.IncreaseKeywordCountCommand;
-import org.jundragon.blog.application.port.out.BlogResponse;
-import org.jundragon.blog.application.port.out.BlogSource;
-import org.jundragon.blog.application.port.out.BlogSourceRequest;
-import org.jundragon.blog.domain.Blog;
-import org.jundragon.common.annotation.FacadeService;
+import org.jundragon.core.blog.application.port.in.BlogSearchCommand;
+import org.jundragon.core.blog.application.port.in.IncreaseKeywordCountCommand;
+import org.jundragon.core.blog.application.port.out.BlogResponse;
+import org.jundragon.core.blog.application.port.out.BlogSource;
+import org.jundragon.core.blog.application.port.out.BlogSourceRequest;
+import org.jundragon.core.blog.domain.Blog;
+import org.jundragon.core.common.annotation.FacadeService;
 
 @FacadeService // 파사드 서비스는 다른 서비스에서 참조하지 않도록 주의
 @Builder

@@ -1,4 +1,4 @@
-package org.jundragon.blog.application.port.in;
+package org.jundragon.core.blog.application.port.in;
 
 import lombok.Builder;
 

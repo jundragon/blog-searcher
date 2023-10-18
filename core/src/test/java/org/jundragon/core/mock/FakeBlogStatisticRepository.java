@@ -1,4 +1,4 @@
-package org.jundragon.blog.mock;
+package org.jundragon.core.mock;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,8 +6,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import org.jundragon.blog.application.port.out.BlogStatisticRepository;
-import org.jundragon.blog.domain.BlogKeyword;
+import org.jundragon.core.blog.application.port.out.BlogStatisticRepository;
+import org.jundragon.core.blog.domain.BlogKeyword;
 
 public class FakeBlogStatisticRepository implements BlogStatisticRepository {
 

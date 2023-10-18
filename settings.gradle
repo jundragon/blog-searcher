@@ -1,4 +1,4 @@
-rootProject.name = 'blog-search'
+rootProject.name = 'blog-searcher'
 include 'core'
 include 'persistence-adapter'
 

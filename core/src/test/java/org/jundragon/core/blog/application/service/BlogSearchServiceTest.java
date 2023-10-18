@@ -1,16 +1,16 @@
-package org.jundragon.blog.application.service;
+package org.jundragon.core.blog.application.service;
 
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.jundragon.blog.application.port.in.BlogSearchCommand;
-import org.jundragon.blog.application.port.out.BlogSource;
-import org.jundragon.blog.application.port.out.BlogSourceRequest;
-import org.jundragon.blog.domain.Blog;
-import org.jundragon.blog.domain.BlogDocument;
-import org.jundragon.blog.domain.BlogSearchSortType;
+import org.jundragon.core.blog.application.port.in.BlogSearchCommand;
+import org.jundragon.core.blog.application.port.out.BlogSource;
+import org.jundragon.core.blog.application.port.out.BlogSourceRequest;
+import org.jundragon.core.blog.domain.Blog;
+import org.jundragon.core.blog.domain.BlogDocument;
+import org.jundragon.core.blog.domain.BlogSearchSortType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
