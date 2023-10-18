@@ -4,7 +4,7 @@ import java.util.List;
 import org.jundragon.blog.application.port.in.IncreaseKeywordCountCommand;
 import org.jundragon.blog.application.port.in.SearchTopPopularKeywordCommand;
 import org.jundragon.blog.application.port.out.BlogStatisticRepository;
-import org.jundragon.blog.domain.BlogKeywordCount;
+import org.jundragon.blog.domain.BlogKeyword;
 import org.jundragon.blog.mock.FakeBlogStatisticRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -62,7 +62,7 @@ class BlogStatisticServiceTest {
         }
 
         // when
-        List<BlogKeywordCount> topPopularKeywords = blogStatisticService.getTopPopularKeyword(command);
+        List<BlogKeyword> topPopularKeywords = blogStatisticService.getTopPopularKeyword(command);
 
         // then
         Assertions.assertEquals(10, topPopularKeywords.get(0).getCount());
@@ -87,7 +87,7 @@ class BlogStatisticServiceTest {
         }
 
         // when
-        List<BlogKeywordCount> topPopularKeywords = blogStatisticService.getTopPopularKeyword(command);
+        List<BlogKeyword> topPopularKeywords = blogStatisticService.getTopPopularKeyword(command);
 
         // then
         Assertions.assertEquals(10, topPopularKeywords.size());

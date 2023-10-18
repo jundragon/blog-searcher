@@ -3,7 +3,7 @@ package org.jundragon.blog.application.service;
 import java.util.Optional;
 import org.jundragon.blog.application.port.in.IncreaseKeywordCountCommand;
 import org.jundragon.blog.application.port.out.BlogStatisticRepository;
-import org.jundragon.blog.domain.BlogKeywordCount;
+import org.jundragon.blog.domain.BlogKeyword;
 import org.jundragon.blog.mock.FakeBlogStatisticRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,7 +25,7 @@ class BlogStatisticCommandServiceTest {
     @Test
     void 키워드가_카운팅_된다() {
         // given
-        blogStatisticRepository.save(BlogKeywordCount.builder()
+        blogStatisticRepository.save(BlogKeyword.builder()
             .keyword("아를의평원")
             .build()
         );
@@ -36,7 +36,7 @@ class BlogStatisticCommandServiceTest {
 
         // when
         blogStatisticCommandService.increaseKeywordCount(command);
-        Optional<BlogKeywordCount> byKeyword = blogStatisticRepository.findByKeyword("아를의평원");
+        Optional<BlogKeyword> byKeyword = blogStatisticRepository.findByKeyword("아를의평원");
 
         // then
         Assertions.assertEquals(true, byKeyword.isPresent());
@@ -52,7 +52,7 @@ class BlogStatisticCommandServiceTest {
 
         // when
         blogStatisticCommandService.increaseKeywordCount(command);
-        Optional<BlogKeywordCount> byKeyword = blogStatisticRepository.findByKeyword("아를의평원");
+        Optional<BlogKeyword> byKeyword = blogStatisticRepository.findByKeyword("아를의평원");
 
         // then
         Assertions.assertEquals(true, byKeyword.isPresent());

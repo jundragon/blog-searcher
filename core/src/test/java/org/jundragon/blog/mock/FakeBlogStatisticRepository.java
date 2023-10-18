@@ -7,28 +7,28 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.jundragon.blog.application.port.out.BlogStatisticRepository;
-import org.jundragon.blog.domain.BlogKeywordCount;
+import org.jundragon.blog.domain.BlogKeyword;
 
 public class FakeBlogStatisticRepository implements BlogStatisticRepository {
 
-    private final List<BlogKeywordCount> data = Collections.synchronizedList(new ArrayList<>());
+    private final List<BlogKeyword> data = Collections.synchronizedList(new ArrayList<>());
 
     @Override
-    public void save(BlogKeywordCount blogKeywordCount) {
-        data.add(blogKeywordCount);
+    public void save(BlogKeyword blogKeyword) {
+        data.add(blogKeyword);
     }
 
     @Override
-    public Optional<BlogKeywordCount> findByKeyword(String keyword) {
+    public Optional<BlogKeyword> findByKeyword(String keyword) {
         return data.stream().filter(
             item -> item.getKeyword().equals(keyword)
         ).findAny();
     }
 
     @Override
-    public List<BlogKeywordCount> getKeywordOrderByCountDescTop(Long top) {
+    public List<BlogKeyword> getKeywordOrderByCountDescTop(Long top) {
         return data.stream()
-            .sorted(Comparator.comparing(BlogKeywordCount::getCount).reversed())
+            .sorted(Comparator.comparing(BlogKeyword::getCount).reversed())
             .limit(top)
             .collect(Collectors.toList());
     }

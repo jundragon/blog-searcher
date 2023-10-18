@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.jundragon.blog.application.port.in.IncreaseKeywordCountCommand;
 import org.jundragon.blog.application.port.out.BlogStatisticRepository;
-import org.jundragon.blog.domain.BlogKeywordCount;
+import org.jundragon.blog.domain.BlogKeyword;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,16 +18,16 @@ public class BlogStatisticCommandService {
 
     @Transactional
     public void increaseKeywordCount(IncreaseKeywordCountCommand command) {
-        Optional<BlogKeywordCount> byKeyword = blogStatisticRepository.findByKeyword(command.keyword());
+        Optional<BlogKeyword> byKeyword = blogStatisticRepository.findByKeyword(command.keyword());
         byKeyword.ifPresentOrElse(
-            BlogKeywordCount::increase,
+            BlogKeyword::increase,
             () -> createNewKeywordCount(command)
         );
     }
 
     private void createNewKeywordCount(IncreaseKeywordCountCommand command) {
         blogStatisticRepository.save(
-            BlogKeywordCount.builder()
+            BlogKeyword.builder()
                 .keyword(command.keyword())
                 .build()
         );

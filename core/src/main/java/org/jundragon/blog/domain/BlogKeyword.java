@@ -4,13 +4,13 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class BlogKeywordCount {
+public class BlogKeyword {
 
     private final String keyword;
     private long count;
 
     @Builder
-    public BlogKeywordCount(String keyword) {
+    public BlogKeyword(String keyword) {
         this.keyword = keyword;
         this.count = 1;
     }
