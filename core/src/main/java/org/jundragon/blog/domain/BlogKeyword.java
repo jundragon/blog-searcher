@@ -1,18 +1,22 @@
 package org.jundragon.blog.domain;
 
+import java.util.Objects;
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 public class BlogKeyword {
 
+    private final Long id;
+
     private final String keyword;
-    private long count;
+    private Long count;
 
     @Builder
-    public BlogKeyword(String keyword) {
+    public BlogKeyword(Long id, String keyword, Long count) {
+        this.id = id;
         this.keyword = keyword;
-        this.count = 1;
+        this.count = Objects.isNull(count) ? 1L : count;
     }
 
     public void increase() {
