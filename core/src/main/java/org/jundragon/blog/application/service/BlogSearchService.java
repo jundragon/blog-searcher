@@ -17,11 +17,11 @@ public class BlogSearchService {
 
     private final BlogSource blogSource;
 
-    private final BlogStatisticService blogStatisticService;
+    private final BlogStatisticCommandService blogStatisticCommandService;
 
     public BlogResponse search(BlogSearchCommand command) {
         // 인기검색어 키워드 통계용 키워드 카운트
-        blogStatisticService.increaseKeywordCount(
+        blogStatisticCommandService.increaseKeywordCount(
             IncreaseKeywordCountCommand.builder()
                 .keyword(command.keyword())
                 .build()

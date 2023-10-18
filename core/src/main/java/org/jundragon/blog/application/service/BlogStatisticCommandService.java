@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Builder
 @RequiredArgsConstructor
-public class BlogStatisticService {
+public class BlogStatisticCommandService {
 
     private final BlogStatisticRepository blogStatisticRepository;
 

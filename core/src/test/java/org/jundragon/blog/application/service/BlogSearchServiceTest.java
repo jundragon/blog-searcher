@@ -25,14 +25,14 @@ class BlogSearchServiceTest {
     BlogSource blogSource;
 
     @Mock
-    BlogStatisticService blogStatisticService;
+    BlogStatisticCommandService blogStatisticCommandService;
     BlogSearchService blogSearchService;
 
     @BeforeEach
     void init() {
         this.blogSearchService = BlogSearchService.builder()
             .blogSource(blogSource)
-            .blogStatisticService(blogStatisticService)
+            .blogStatisticCommandService(blogStatisticCommandService)
             .build();
     }
 

@@ -10,16 +10,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
-class BlogStatisticServiceTest {
+class BlogStatisticCommandServiceTest {
 
-    BlogStatisticService blogStatisticService;
+    BlogStatisticCommandService blogStatisticCommandService;
 
     @Mock
     BlogStatisticRepository blogStatisticRepository = new FakeBlogStatisticRepository();
 
     @BeforeEach
     void init() {
-        this.blogStatisticService = BlogStatisticService.builder()
+        this.blogStatisticCommandService = BlogStatisticCommandService.builder()
             .blogStatisticRepository(blogStatisticRepository)
             .build();
     }
@@ -37,7 +37,7 @@ class BlogStatisticServiceTest {
             .build();
 
         // when
-        blogStatisticService.increaseKeywordCount(command);
+        blogStatisticCommandService.increaseKeywordCount(command);
         Optional<BlogKeywordCount> byKeyword = blogStatisticRepository.findByKeyword("아를의평원");
 
         // then
@@ -53,7 +53,7 @@ class BlogStatisticServiceTest {
             .build();
 
         // when
-        blogStatisticService.increaseKeywordCount(command);
+        blogStatisticCommandService.increaseKeywordCount(command);
         Optional<BlogKeywordCount> byKeyword = blogStatisticRepository.findByKeyword("아를의평원");
 
         // then
