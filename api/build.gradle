@@ -17,6 +17,7 @@ configurations {
 dependencies {
     implementation project(":core")
     implementation project(":persistence-adapter")
+    implementation project(":blogsource-adapter")
 
     implementation 'org.projectlombok:lombok:1.18.22'
     compileOnly 'org.projectlombok:lombok'

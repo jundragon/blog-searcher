@@ -1,7 +1,7 @@
 package org.jundragon.blogsearcher.statistics.response;
 
 import lombok.Builder;
-import org.jundragon.core.blog.domain.BlogKeyword;
+import org.jundragon.blogsearcher.core.blog.domain.BlogKeyword;
 
 @Builder
 public record SearchTopPopularKeywordResponse(String keyword, Long count) {

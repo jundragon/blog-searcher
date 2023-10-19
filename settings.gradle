@@ -2,3 +2,5 @@ rootProject.name = 'blog-searcher'
 include 'core'
 include 'api'
 include 'persistence-adapter'
+include 'blogsource-adapter'
+

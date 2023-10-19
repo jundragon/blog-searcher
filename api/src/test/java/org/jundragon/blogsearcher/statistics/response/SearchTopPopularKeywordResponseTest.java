@@ -1,6 +1,6 @@
 package org.jundragon.blogsearcher.statistics.response;
 
-import org.jundragon.core.blog.domain.BlogKeyword;
+import org.jundragon.blogsearcher.core.blog.domain.BlogKeyword;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
