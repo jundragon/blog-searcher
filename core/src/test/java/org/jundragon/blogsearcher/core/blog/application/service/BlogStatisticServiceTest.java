@@ -67,8 +67,10 @@ class BlogStatisticServiceTest {
         // then
         Assertions.assertEquals(10, topPopularKeywords.get(0).getCount());
         Assertions.assertEquals("글룸헤이븐", topPopularKeywords.get(0).getKeyword());
+
         Assertions.assertEquals(5, topPopularKeywords.get(1).getCount());
         Assertions.assertEquals("아를의평원", topPopularKeywords.get(1).getKeyword());
+
         Assertions.assertEquals(3, topPopularKeywords.get(2).getCount());
         Assertions.assertEquals("오딘을위하여", topPopularKeywords.get(2).getKeyword());
     }

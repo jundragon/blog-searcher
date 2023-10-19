@@ -33,7 +33,7 @@ public class BlogSearchService {
         Blog blog = blogSource.searchBlogDocuments(
             BlogSourceRequest.builder()
                 .keyword(command.keyword())
-                .sortType(command.sortType())
+                .sortType(command.sort())
                 .page(command.page())
                 .size(command.size())
                 .build()
