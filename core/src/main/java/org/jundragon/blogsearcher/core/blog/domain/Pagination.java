@@ -34,6 +34,6 @@ public class Pagination {
     }
 
     private double calcTotalPage(int totalCount, int size) {
-        return Math.ceil(totalCount / size);
+        return (double) totalCount / size;
     }
 }
