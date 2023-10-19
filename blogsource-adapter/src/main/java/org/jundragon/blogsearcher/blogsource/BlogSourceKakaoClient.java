@@ -32,7 +32,7 @@ public class BlogSourceKakaoClient implements BlogSourceOpenApiClient {
             .uri(uriBuilder ->
                 uriBuilder.path(blogSourcePath)
                     .queryParam("query", request.query())
-                    .queryParam("sort", request.sort())
+                    .queryParam("sort", request.sort().getKakaoCode())
                     .queryParam("page", request.page())
                     .queryParam("size", request.size())
                     .build())

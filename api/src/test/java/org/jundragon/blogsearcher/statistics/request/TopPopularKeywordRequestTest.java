@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-class SearchTopPopularKeywordRequestTest {
+class TopPopularKeywordRequestTest {
 
     private static ValidatorFactory factory;
     private static Validator validator;
@@ -29,12 +29,12 @@ class SearchTopPopularKeywordRequestTest {
     @Test
     void 인기검색어_최대_10개_가능() {
         // given
-        SearchTopPopularKeywordRequest request = SearchTopPopularKeywordRequest.builder()
+        TopPopularKeywordRequest request = TopPopularKeywordRequest.builder()
             .top(10L)
             .build();
 
         // when
-        Set<ConstraintViolation<SearchTopPopularKeywordRequest>> violations = validator.validate(request);
+        Set<ConstraintViolation<TopPopularKeywordRequest>> violations = validator.validate(request);
 
         // then
         Assertions.assertTrue(violations.isEmpty());
@@ -44,12 +44,12 @@ class SearchTopPopularKeywordRequestTest {
     @Test
     void 인기검색어_최대_10개이상_유효성검사() {
         // given
-        SearchTopPopularKeywordRequest request = SearchTopPopularKeywordRequest.builder()
+        TopPopularKeywordRequest request = TopPopularKeywordRequest.builder()
             .top(100L)
             .build();
 
         // when
-        Set<ConstraintViolation<SearchTopPopularKeywordRequest>> violations = validator.validate(request);
+        Set<ConstraintViolation<TopPopularKeywordRequest>> violations = validator.validate(request);
 
         // then
         Assertions.assertFalse(violations.isEmpty());
@@ -59,12 +59,12 @@ class SearchTopPopularKeywordRequestTest {
     @Test
     void SearchTopPopularKeywordRequest_에_데이터가_없을_경우_기본값으로_출력되어야_한다() {
         // given
-        SearchTopPopularKeywordRequest request = SearchTopPopularKeywordRequest.builder()
+        TopPopularKeywordRequest request = TopPopularKeywordRequest.builder()
             .top(null)
             .build();
 
         // when
-        Set<ConstraintViolation<SearchTopPopularKeywordRequest>> violations = validator.validate(request);
+        Set<ConstraintViolation<TopPopularKeywordRequest>> violations = validator.validate(request);
 
         // then
         Assertions.assertTrue(violations.isEmpty());

@@ -9,7 +9,7 @@ import lombok.Getter;
 
 @Builder
 @Getter
-public class SearchTopPopularKeywordRequest {
+public class TopPopularKeywordRequest {
 
     @Min(1)
     @Max(10)
@@ -17,7 +17,7 @@ public class SearchTopPopularKeywordRequest {
     private Long top;
 
     @Builder
-    private SearchTopPopularKeywordRequest(Long top) {
+    private TopPopularKeywordRequest(Long top) {
         this.top = Objects.isNull(top) ? 10L : top;
     }
 }

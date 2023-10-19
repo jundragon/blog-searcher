@@ -19,10 +19,12 @@ public class BlogStatisticCommandService {
     @Transactional
     public void increaseKeywordCount(IncreaseKeywordCountCommand command) {
         Optional<BlogKeyword> byKeyword = blogStatisticRepository.findByKeyword(command.keyword());
-        byKeyword.ifPresentOrElse(
-            BlogKeyword::increase,
-            () -> createNewKeywordCount(command)
-        );
+        if (!byKeyword.isPresent()) {
+            createNewKeywordCount(command);
+            return;
+        }
+        byKeyword.get().increase();
+        blogStatisticRepository.save(byKeyword.get());
     }
 
     private void createNewKeywordCount(IncreaseKeywordCountCommand command) {

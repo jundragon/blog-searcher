@@ -35,7 +35,7 @@ public class BlogSourceNaverClient implements BlogSourceOpenApiClient {
             .uri(uriBuilder ->
                 uriBuilder.path(blogSourcePath)
                     .queryParam("query", request.query())
-                    .queryParam("sort", request.sort())
+                    .queryParam("sort", request.sort().getNaverCode())
                     .queryParam("page", request.page())
                     .queryParam("size", request.size())
                     .build())

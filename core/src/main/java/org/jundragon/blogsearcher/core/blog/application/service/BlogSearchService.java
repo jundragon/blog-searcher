@@ -9,6 +9,7 @@ import org.jundragon.blogsearcher.core.blog.application.port.out.BlogSource;
 import org.jundragon.blogsearcher.core.blog.application.port.out.BlogSourceRequest;
 import org.jundragon.blogsearcher.core.blog.domain.Blog;
 import org.jundragon.blogsearcher.core.common.annotation.FacadeService;
+import org.springframework.transaction.annotation.Transactional;
 
 @FacadeService // 파사드 서비스는 다른 서비스에서 참조하지 않도록 주의
 @Builder
@@ -19,6 +20,7 @@ public class BlogSearchService {
 
     private final BlogStatisticCommandService blogStatisticCommandService;
 
+    @Transactional
     public BlogResponse search(BlogSearchCommand command) {
         // 인기검색어 키워드 통계용 키워드 카운트
         blogStatisticCommandService.increaseKeywordCount(
