@@ -20,7 +20,8 @@ public class BlogStatisticsController {
     private final BlogStatisticService blogStatisticService;
 
     @GetMapping("/popular")
-    public ApiResponse<Object> searchTopPopularKeyword(@Valid TopPopularKeywordRequest request) {
+    public ApiResponse<List<SearchTopPopularKeywordResponse>> searchTopPopularKeyword(
+        @Valid TopPopularKeywordRequest request) {
 
         List<SearchTopPopularKeywordResponse> response = blogStatisticService
             .getTopPopularKeyword(

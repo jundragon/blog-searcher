@@ -13,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class Blog {
 
-    // TODO : 페이징 정보 추가 (적어도 카카오, 네이버 두 제공자에서 제공하는 정보로 만들어낼 수 있는 것으로)
-
     private final List<BlogDocument> documents;
+    private final Pagination pagination;
 }

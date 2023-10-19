@@ -1,10 +1,13 @@
 package org.jundragon.blogsearcher.blogsource;
 
+import java.util.stream.Collectors;
 import lombok.Builder;
 import org.jundragon.blogsearcher.blogsource.factory.BlogSourceOpenApiClient;
 import org.jundragon.blogsearcher.blogsource.request.BlogSearchRequest;
 import org.jundragon.blogsearcher.blogsource.response.KakaoBlogSearchResponse;
+import org.jundragon.blogsearcher.blogsource.response.KakaoBlogSearchResponse.Document;
 import org.jundragon.blogsearcher.core.blog.domain.Blog;
+import org.jundragon.blogsearcher.core.blog.domain.Pagination;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
@@ -39,6 +42,20 @@ public class BlogSourceKakaoClient implements BlogSourceOpenApiClient {
             .header("Authorization", "KakaoAK " + restApiKey)
             .retrieve()
             .bodyToMono(KakaoBlogSearchResponse.class)
-            .map(KakaoBlogSearchResponse::to);
+            .map(response -> convert(request, response));
+    }
+
+    private Blog convert(BlogSearchRequest request, KakaoBlogSearchResponse response) {
+        return Blog.builder()
+            .documents(
+                response.documents().stream()
+                    .map(Document::to).collect(Collectors.toList()))
+            .pagination(
+                Pagination.builder()
+                    .currentPage(request.page())
+                    .size(request.size())
+                    .totalCount(response.meta().pageableCount())
+                    .build())
+            .build();
     }
 }

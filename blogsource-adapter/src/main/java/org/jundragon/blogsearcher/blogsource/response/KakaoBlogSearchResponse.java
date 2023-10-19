@@ -3,23 +3,14 @@ package org.jundragon.blogsearcher.blogsource.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 import lombok.Builder;
-import org.jundragon.blogsearcher.core.blog.domain.Blog;
 import org.jundragon.blogsearcher.core.blog.domain.BlogDocument;
 
 @Builder
 public record KakaoBlogSearchResponse(
     Meta meta, // 응답 관련 정보
     List<Document> documents // 응답 결과
-) implements BlogConvert {
-
-    @Override
-    public Blog to() {
-        return Blog.builder()
-            .documents(documents.stream().map(Document::to).collect(Collectors.toList()))
-            .build();
-    }
+) {
 
     @Builder
     public record Meta(
@@ -38,9 +29,8 @@ public record KakaoBlogSearchResponse(
         @JsonProperty("blogname") String blogName, // 블로그의 이름
         String thumbnail, // 검색 시스템에서 추출한 대표 미리보기 이미지
         ZonedDateTime datetime // 블로그 글 작성시간
-    ) implements BlogDocumentConvert {
+    ) {
 
-        @Override
         public BlogDocument to() {
             return BlogDocument.builder()
                 .title(title)

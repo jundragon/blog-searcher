@@ -23,7 +23,7 @@ public class BlogSearchRequest {
     public BlogSearchCommand to() {
         return BlogSearchCommand.builder()
             .keyword(keyword)
-            .sortType(sort)
+            .sort(sort)
             .build();
     }
 }

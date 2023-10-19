@@ -57,7 +57,7 @@ class BlogSearchServiceTest {
 
         var command = BlogSearchCommand.builder()
             .keyword("카카오뱅크")
-            .sortType(BlogSearchSortType.ACCURACY)
+            .sort(BlogSearchSortType.ACCURACY)
             .build();
 
         // when

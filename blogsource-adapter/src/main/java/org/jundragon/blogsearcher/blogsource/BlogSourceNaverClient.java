@@ -1,10 +1,13 @@
 package org.jundragon.blogsearcher.blogsource;
 
+import java.util.stream.Collectors;
 import lombok.Builder;
 import org.jundragon.blogsearcher.blogsource.factory.BlogSourceOpenApiClient;
 import org.jundragon.blogsearcher.blogsource.request.BlogSearchRequest;
 import org.jundragon.blogsearcher.blogsource.response.NaverBlogSearchResponse;
+import org.jundragon.blogsearcher.blogsource.response.NaverBlogSearchResponse.BlogItem;
 import org.jundragon.blogsearcher.core.blog.domain.Blog;
+import org.jundragon.blogsearcher.core.blog.domain.Pagination;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
@@ -43,6 +46,20 @@ public class BlogSourceNaverClient implements BlogSourceOpenApiClient {
             .header("X-Naver-Client-Secret", clientSecret)
             .retrieve()
             .bodyToMono(NaverBlogSearchResponse.class)
-            .map(NaverBlogSearchResponse::to);
+            .map(response -> convert(request, response));
+    }
+
+    private Blog convert(BlogSearchRequest request, NaverBlogSearchResponse response) {
+        return Blog.builder()
+            .documents(
+                response.items().stream()
+                    .map(BlogItem::to).collect(Collectors.toList()))
+            .pagination(
+                Pagination.builder()
+                    .currentPage(request.page())
+                    .size(request.size())
+                    .totalCount(response.total().intValue())
+                    .build())
+            .build();
     }
 }
