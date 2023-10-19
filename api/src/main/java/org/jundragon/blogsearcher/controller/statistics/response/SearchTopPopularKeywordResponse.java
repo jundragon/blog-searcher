@@ -1,4 +1,4 @@
-package org.jundragon.blogsearcher.statistics.response;
+package org.jundragon.blogsearcher.controller.statistics.response;
 
 import lombok.Builder;
 import org.jundragon.blogsearcher.core.blog.domain.BlogKeyword;

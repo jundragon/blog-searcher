@@ -1,4 +1,4 @@
-package org.jundragon.blogsearcher.common.error;
+package org.jundragon.blogsearcher.error;
 
 public interface ErrorCodeInterface {
 

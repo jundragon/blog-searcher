@@ -1,13 +1,13 @@
-package org.jundragon.blogsearcher.statistics;
+package org.jundragon.blogsearcher.controller.statistics;
 
 import java.util.List;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.jundragon.blogsearcher.common.api.ApiResponse;
+import org.jundragon.blogsearcher.api.ApiResponse;
+import org.jundragon.blogsearcher.controller.statistics.request.TopPopularKeywordRequest;
+import org.jundragon.blogsearcher.controller.statistics.response.SearchTopPopularKeywordResponse;
 import org.jundragon.blogsearcher.core.blog.application.port.in.SearchTopPopularKeywordCommand;
 import org.jundragon.blogsearcher.core.blog.application.service.BlogStatisticService;
-import org.jundragon.blogsearcher.statistics.request.TopPopularKeywordRequest;
-import org.jundragon.blogsearcher.statistics.response.SearchTopPopularKeywordResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

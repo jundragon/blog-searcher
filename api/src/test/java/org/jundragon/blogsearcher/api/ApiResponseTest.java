@@ -1,6 +1,6 @@
-package org.jundragon.blogsearcher.common.api;
+package org.jundragon.blogsearcher.api;
 
-import org.jundragon.blogsearcher.common.error.impl.ErrorCode;
+import org.jundragon.blogsearcher.error.impl.ErrorCode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

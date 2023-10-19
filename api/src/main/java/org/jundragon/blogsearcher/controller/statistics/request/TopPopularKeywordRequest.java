@@ -1,4 +1,4 @@
-package org.jundragon.blogsearcher.statistics.request;
+package org.jundragon.blogsearcher.controller.statistics.request;
 
 import java.util.Objects;
 import javax.validation.constraints.Max;

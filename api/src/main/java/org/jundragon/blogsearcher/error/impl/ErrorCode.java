@@ -1,8 +1,8 @@
-package org.jundragon.blogsearcher.common.error.impl;
+package org.jundragon.blogsearcher.error.impl;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.jundragon.blogsearcher.common.error.ErrorCodeInterface;
+import org.jundragon.blogsearcher.error.ErrorCodeInterface;
 import org.springframework.http.HttpStatus;
 
 @Getter

@@ -1,4 +1,4 @@
-package org.jundragon.blogsearcher.search.request;
+package org.jundragon.blogsearcher.controller.search.request;
 
 import java.util.Objects;
 import javax.validation.constraints.NotBlank;

@@ -1,6 +1,6 @@
-package org.jundragon.blogsearcher.common.api;
+package org.jundragon.blogsearcher.api;
 
-import org.jundragon.blogsearcher.common.error.ErrorCodeInterface;
+import org.jundragon.blogsearcher.error.ErrorCodeInterface;
 
 public record ApiResponse<T>(Result result, T body) {
 

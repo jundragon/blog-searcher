@@ -1,8 +1,8 @@
-package org.jundragon.blogsearcher.common.api;
+package org.jundragon.blogsearcher.api;
 
 import lombok.Builder;
-import org.jundragon.blogsearcher.common.error.ErrorCodeInterface;
-import org.jundragon.blogsearcher.common.error.impl.ErrorCode;
+import org.jundragon.blogsearcher.error.ErrorCodeInterface;
+import org.jundragon.blogsearcher.error.impl.ErrorCode;
 
 @Builder
 public record Result(String code, String message, String description) {
