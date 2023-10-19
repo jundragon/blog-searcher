@@ -14,6 +14,7 @@ repositories {
 
 dependencies {
     implementation project(":core")
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
@@ -21,16 +22,16 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+    // querydsl 의존성 시작
     implementation 'com.querydsl:querydsl-jpa'
     implementation 'com.querydsl:querydsl-core'
-//    implementation "com.querydsl:querydsl-collections"
-    
     // querydsl JPAAnnotationProcessor 사용 지정
     annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jpa"
     // java.lang.NoClassDefFoundError (javax.annotation.Generated) 대응 코드
     annotationProcessor "jakarta.annotation:jakarta.annotation-api"
     // java.lang.NoClassDefFoundError (javax.annotation.Entity) 대응 코드
     annotationProcessor "jakarta.persistence:jakarta.persistence-api"
+    // querydsl 의존성 끝
 }
 
 // Querydsl 설정
