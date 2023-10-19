@@ -51,7 +51,33 @@ GET /api/v1/blogs?keyword={keyword}
 *Responses*
 
 ```json
-
+{
+  "result": {
+    "code": "200",
+    "message": "성공",
+    "description": "성공"
+  },
+  "body": {
+    "documents": [
+      {
+        "title": "김호중 &#39;<b>테스</b>형!!&#39; 유튜브 조회 수 300만 뷰!",
+        "contents": "김호중 &#39;<b>테스</b>형!!&#39; 유튜브 조회 수 300만 뷰! . 2023년 9월27일 수요일 포스팅주제 ​김호중 [불후의명곡 &#39;<b>테스</b>형!&#39;] 유튜브 조회 수 삼백만 뷰 돌파 축하 ’불후의 명곡 2023 상반기 왕중왕전&#39; 최종 우승곡 <b>테스</b>형!!! ​ 김호중 가수님은 자기만의 스타일로 완벽하게 재해석, 독보적 천상의 목소리로 첫 소절 부터 관중을...",
+        "url": "https://kimej004.tistory.com/1517",
+        "blogName": "참사랑 블로그",
+        "thumbnail": "https://search1.kakaocdn.net/argon/130x130_85_c/5vD1td4LEID",
+        "createdAt": "2023-09-27T03:18:40"
+      },
+      ...
+    ],
+    "pagination": {
+      "hasNextPage": true,
+      "nextPage": 2,
+      "currentPage": 1,
+      "totalCount": 793,
+      "size": 10
+    }
+  }
+}
 ```
 
 ### 인기 검색어 API
@@ -71,7 +97,19 @@ GET /api/v1/blogs/statistics/popular
 *Responses*
 
 ```json
-
+{
+  "result": {
+    "code": "200",
+    "message": "성공",
+    "description": "성공"
+  },
+  "body": [
+    {
+      "keyword": "테라포밍마스",
+      "count": 1001
+    }
+  ]
+}
 ```
 
 ---
