@@ -13,17 +13,17 @@ public class BlogSearchRequest {
 
     @NotBlank(message = "키워드는 필수입니다.")
     private final String keyword;
-    private final BlogSearchSortType sortType;
+    private final BlogSearchSortType sort;
 
-    public BlogSearchRequest(String keyword, BlogSearchSortType sortType) {
+    public BlogSearchRequest(String keyword, BlogSearchSortType sort) {
         this.keyword = keyword;
-        this.sortType = Objects.isNull(sortType) ? BlogSearchSortType.ACCURACY : sortType;
+        this.sort = Objects.isNull(sort) ? BlogSearchSortType.ACCURACY : sort;
     }
 
     public BlogSearchCommand to() {
         return BlogSearchCommand.builder()
             .keyword(keyword)
-            .sortType(sortType)
+            .sortType(sort)
             .build();
     }
 }

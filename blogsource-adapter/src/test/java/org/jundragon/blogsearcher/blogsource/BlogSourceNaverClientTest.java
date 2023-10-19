@@ -23,9 +23,6 @@ class BlogSourceNaverClientTest {
 
         BlogSearchRequest request = BlogSearchRequest.builder()
             .query("테스트")
-            .sort("sim")
-            .page(1)
-            .size(10)
             .build();
 
         // when
