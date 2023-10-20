@@ -1,13 +1,12 @@
 package org.jundragon.blogsearcher.core.blog.application.service;
 
-import static org.mockito.ArgumentMatchers.isA;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.jundragon.blogsearcher.core.blog.application.port.in.BlogSearchCommand;
 import org.jundragon.blogsearcher.core.blog.application.port.out.BlogSource;
-import org.jundragon.blogsearcher.core.blog.application.port.out.BlogSourceRequest;
 import org.jundragon.blogsearcher.core.blog.domain.Blog;
 import org.jundragon.blogsearcher.core.blog.domain.BlogDocument;
 import org.jundragon.blogsearcher.core.blog.domain.BlogSearchSortType;
@@ -18,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import reactor.core.publisher.Mono;
 
 @ExtendWith(MockitoExtension.class)
 class BlogSearchServiceTest {
@@ -50,11 +50,11 @@ class BlogSearchServiceTest {
                 .build()
         );
 
-        when(blogSource.searchBlogDocuments(isA(BlogSourceRequest.class)))
+        when(blogSource.searchBlogDocuments(any()))
             .thenReturn(
-                Blog.builder()
+                Mono.just(Blog.builder()
                     .documents(documents)
-                    .build()
+                    .build())
             );
 
         var command = BlogSearchCommand.builder()
@@ -66,12 +66,8 @@ class BlogSearchServiceTest {
         var actual = blogSearchService.search(command);
 
         // then
-        Assertions.assertEquals(documents.size(), actual.getDocuments().size());
-        Assertions.assertEquals(documents.get(0).contents(), actual.getDocuments().get(0).contents());
+        Assertions.assertEquals(documents.size(), actual.block().getDocuments().size());
+        Assertions.assertEquals(documents.get(0).contents(), actual.block().getDocuments().get(0).contents());
     }
-
-//    @Test
-//    void 블로그_조회시_키워드를_저장해야_한다() {
-//
-//    }
+    
 }

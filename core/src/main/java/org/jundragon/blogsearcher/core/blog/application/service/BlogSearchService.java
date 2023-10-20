@@ -27,14 +27,6 @@ public class BlogSearchService {
     @Transactional
     public Mono<BlogResponse> search(BlogSearchCommand command) {
 
-//        // 인기검색어 키워드 통계용 키워드 카운트 이벤트 발생
-//        // 키워드는 토큰화 하여 저장하여 수집한다.
-//        List<String> tokenize = TokenizeUtils.tokenize(command.keyword());
-//        KeywordCountEvent keywordCountEvent = KeywordCountEvent.builder()
-//            .keywords(tokenize)
-//            .build();
-//        keywordEventPublisher.publish(keywordCountEvent);
-
         // 블로그 소스 검색 응답
         return blogSource.searchBlogDocuments(
                 BlogSourceRequest.builder()
