@@ -9,6 +9,7 @@ import org.jundragon.blogsearcher.core.blog.application.service.BlogSearchServic
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Mono;
 
 @RequestMapping("/api/v1")
 @RestController
@@ -19,11 +20,10 @@ public class BlogSearchController {
 
 
     @GetMapping("/blogs")
-    public ApiResponse<BlogResponse> search(@Valid BlogSearchRequest request) {
+    public Mono<ApiResponse<BlogResponse>> search(@Valid BlogSearchRequest request) {
 
-        BlogResponse response = blogSearchService.search(request.to());
-
-        return ApiResponse.OK(response);
+        return blogSearchService.search(request.to())
+            .map(blogResponse -> ApiResponse.OK(blogResponse));
     }
 
 }

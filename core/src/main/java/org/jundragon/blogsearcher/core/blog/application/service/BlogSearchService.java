@@ -9,10 +9,10 @@ import org.jundragon.blogsearcher.core.blog.application.port.in.BlogSearchComman
 import org.jundragon.blogsearcher.core.blog.application.port.out.BlogResponse;
 import org.jundragon.blogsearcher.core.blog.application.port.out.BlogSource;
 import org.jundragon.blogsearcher.core.blog.application.port.out.BlogSourceRequest;
-import org.jundragon.blogsearcher.core.blog.domain.Blog;
 import org.jundragon.blogsearcher.core.blog.utils.TokenizeUtils;
 import org.jundragon.blogsearcher.core.common.annotation.FacadeService;
 import org.springframework.transaction.annotation.Transactional;
+import reactor.core.publisher.Mono;
 
 @FacadeService // 파사드 서비스는 다른 서비스에서 참조하지 않도록 주의
 @Builder
@@ -24,7 +24,7 @@ public class BlogSearchService {
     private final KeywordEventPublisher keywordEventPublisher;
 
     @Transactional
-    public BlogResponse search(BlogSearchCommand command) {
+    public Mono<BlogResponse> search(BlogSearchCommand command) {
 
         // 인기검색어 키워드 통계용 키워드 카운트 이벤트 발생
         // 키워드는 토큰화 하여 저장하여 수집한다.
@@ -35,16 +35,13 @@ public class BlogSearchService {
         keywordEventPublisher.publish(keywordCountEvent);
 
         // 블로그 소스 검색 응답
-        Blog blog = blogSource.searchBlogDocuments(
-            BlogSourceRequest.builder()
-                .keyword(command.keyword())
-                .sortType(command.sort())
-                .page(command.page())
-                .size(command.size())
-                .build()
-        );
-
-        return BlogResponse.from(blog);
+        return blogSource.searchBlogDocuments(
+                BlogSourceRequest.builder()
+                    .keyword(command.keyword())
+                    .sortType(command.sort())
+                    .page(command.page())
+                    .size(command.size())
+                    .build())
+            .map(BlogResponse::from);
     }
-
 }

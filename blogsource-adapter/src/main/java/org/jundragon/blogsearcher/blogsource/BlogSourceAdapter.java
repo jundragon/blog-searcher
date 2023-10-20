@@ -11,6 +11,7 @@ import org.jundragon.blogsearcher.core.blog.application.port.out.BlogSource;
 import org.jundragon.blogsearcher.core.blog.application.port.out.BlogSourceRequest;
 import org.jundragon.blogsearcher.core.blog.domain.Blog;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
 
 @Slf4j
 @Component
@@ -21,11 +22,11 @@ public class BlogSourceAdapter implements BlogSource {
 
     @CircuitBreaker(name = "blogsource", fallbackMethod = "searchBlogDocumentsFallback")
     @Override
-    public Blog searchBlogDocuments(BlogSourceRequest request) {
+    public Mono<Blog> searchBlogDocuments(BlogSourceRequest request) {
         return searchBlogDocuments(request, blogSourceOpenApiClient.get(0));
     }
 
-    public Blog searchBlogDocumentsFallback(BlogSourceRequest request, Throwable e) {
+    public Mono<Blog> searchBlogDocumentsFallback(BlogSourceRequest request, Throwable e) {
         log.warn("{}에 장애가 발생하여 {}로 변경합니다.",
             blogSourceOpenApiClient.get(0).getBlogSourceName(),
             blogSourceOpenApiClient.get(1).getBlogSourceName());
@@ -33,12 +34,12 @@ public class BlogSourceAdapter implements BlogSource {
         return searchBlogDocuments(request, blogSourceOpenApiClient.get(1));
     }
 
-    private Blog searchBlogDocuments(BlogSourceRequest request, BlogSourceOpenApiClient blogSourceClient) {
+    private Mono<Blog> searchBlogDocuments(BlogSourceRequest request, BlogSourceOpenApiClient blogSourceClient) {
         return blogSourceClient.searchBlogDocuments(BlogSearchRequest.builder()
             .query(request.keyword())
             .sort(request.sortType())
             .size(request.size())
             .page(request.page())
-            .build()).block(); // FIXME : 아직은 Block ...
+            .build());
     }
 }
