@@ -21,6 +21,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'       // Resilience4j의 어노테이션 방식을 사용하기 위해 필요
+    implementation "io.github.resilience4j:resilience4j-spring-boot2:2.1.0" // Resilience4j
+    implementation 'io.github.resilience4j:resilience4j-reactor:2.1.0'      // Reactive 환경에서 Resilience4j를 사용 하기 위해 필요
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
     runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

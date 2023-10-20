@@ -7,6 +7,8 @@ import reactor.core.publisher.Mono;
 
 public interface BlogSourceOpenApiClient {
 
+    String getBlogSourceName();
+
     Mono<Blog> searchBlogDocuments(@Valid BlogSearchRequest request);
 
 }

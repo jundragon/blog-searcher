@@ -13,10 +13,17 @@ import reactor.core.publisher.Mono;
 
 public class BlogSourceKakaoClient implements BlogSourceOpenApiClient {
 
+    private final static String NAME = "카카오 블로그 소스";
+
     private final WebClient webClient;
     private String baseUrl;
     private String blogSourcePath;
     private String restApiKey;
+
+    @Override
+    public String getBlogSourceName() {
+        return NAME;
+    }
 
     @Builder
     public BlogSourceKakaoClient(String baseUrl, String blogSourcePath, String restApiKey) {

@@ -1,6 +1,8 @@
 package org.jundragon.blogsearcher.blogsource;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import java.util.List;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jundragon.blogsearcher.blogsource.factory.BlogSourceOpenApiClient;
@@ -17,16 +19,26 @@ public class BlogSourceAdapter implements BlogSource {
 
     private final List<BlogSourceOpenApiClient> blogSourceOpenApiClient;
 
-    // TODO : kakao or naver Route 하는 기능 추가 필요
-
+    @CircuitBreaker(name = "blogsource", fallbackMethod = "searchBlogDocumentsFallback")
     @Override
     public Blog searchBlogDocuments(BlogSourceRequest request) {
-        return blogSourceOpenApiClient.get(0).searchBlogDocuments(BlogSearchRequest.builder()
-                .query(request.keyword())
-                .sort(request.sortType())
-                .size(request.size())
-                .page(request.page())
-                .build())
-            .block(); // FIXME : 아직은 Block ...
+        return searchBlogDocuments(request, blogSourceOpenApiClient.get(0));
+    }
+
+    public Blog searchBlogDocumentsFallback(BlogSourceRequest request, Throwable e) {
+        log.warn("{}에 장애가 발생하여 {}로 변경합니다.",
+            blogSourceOpenApiClient.get(0).getBlogSourceName(),
+            blogSourceOpenApiClient.get(1).getBlogSourceName());
+        log.warn("[{}] {}", UUID.randomUUID(), e.getMessage());
+        return searchBlogDocuments(request, blogSourceOpenApiClient.get(1));
+    }
+
+    private Blog searchBlogDocuments(BlogSourceRequest request, BlogSourceOpenApiClient blogSourceClient) {
+        return blogSourceClient.searchBlogDocuments(BlogSearchRequest.builder()
+            .query(request.keyword())
+            .sort(request.sortType())
+            .size(request.size())
+            .page(request.page())
+            .build()).block(); // FIXME : 아직은 Block ...
     }
 }

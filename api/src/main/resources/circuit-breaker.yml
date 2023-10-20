@@ -1,0 +1,18 @@
+resilience4j:
+  circuitbreaker:
+    instances:
+      blogsource:
+        register-health-indicator: true
+        base-config: default
+    configs:
+      default:
+        sliding-window-size: 1
+        failure-rate-threshold: 75
+        automatic-transition-from-open-to-half-open-enabled: true
+        permitted-number-of-calls-in-half-open-state: 4
+        wait-duration-in-open-state: 5s
+        sliding-window-type: COUNT_BASED
+    timelimiter:
+      instances:
+        blogsource:
+          timeout-duration: 1s

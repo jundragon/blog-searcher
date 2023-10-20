@@ -25,4 +25,5 @@ public class BlogSearchController {
 
         return ApiResponse.OK(response);
     }
+
 }

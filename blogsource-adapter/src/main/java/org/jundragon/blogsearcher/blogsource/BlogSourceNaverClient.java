@@ -13,12 +13,18 @@ import reactor.core.publisher.Mono;
 
 public class BlogSourceNaverClient implements BlogSourceOpenApiClient {
 
+    private final static String NAME = "네이버 블로그 소스";
+
     private final WebClient webClient;
     private String baseUrl;
     private String blogSourcePath;
     private String clientId;
     private String clientSecret;
 
+    @Override
+    public String getBlogSourceName() {
+        return NAME;
+    }
 
     @Builder
     public BlogSourceNaverClient(String baseUrl, String blogSourcePath, String clientId, String clientSecret) {
