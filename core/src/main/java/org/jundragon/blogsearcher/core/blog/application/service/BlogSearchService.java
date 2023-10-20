@@ -2,6 +2,8 @@ package org.jundragon.blogsearcher.core.blog.application.service;
 
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
+import org.jundragon.blogsearcher.core.blog.application.event.KeywordCountEvent;
+import org.jundragon.blogsearcher.core.blog.application.event.KeywordEventPublisher;
 import org.jundragon.blogsearcher.core.blog.application.port.in.BlogSearchCommand;
 import org.jundragon.blogsearcher.core.blog.application.port.in.IncreaseKeywordCountCommand;
 import org.jundragon.blogsearcher.core.blog.application.port.out.BlogResponse;
@@ -17,11 +19,21 @@ import org.springframework.transaction.annotation.Transactional;
 public class BlogSearchService {
 
     private final BlogSource blogSource;
-
     private final BlogStatisticCommandService blogStatisticCommandService;
+    private final KeywordEventPublisher keywordEventPublisher;
 
     @Transactional
     public BlogResponse search(BlogSearchCommand command) {
+
+        // 키워드 통계용 이벤트 발생
+        // TODO : Command Repository는 이벤트 큐를 통해서만 처리할 것
+        KeywordCountEvent keywordCountEvent = KeywordCountEvent.builder()
+            .keyword(command.keyword())
+            .count(1)
+            .build();
+
+        keywordEventPublisher.publish(keywordCountEvent);
+
         // 인기검색어 키워드 통계용 키워드 카운트
         blogStatisticCommandService.increaseKeywordCount(
             IncreaseKeywordCountCommand.builder()

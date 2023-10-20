@@ -11,6 +11,7 @@ import org.jundragon.blogsearcher.core.blog.application.port.out.BlogSourceReque
 import org.jundragon.blogsearcher.core.blog.domain.Blog;
 import org.jundragon.blogsearcher.core.blog.domain.BlogDocument;
 import org.jundragon.blogsearcher.core.blog.domain.BlogSearchSortType;
+import org.jundragon.blogsearcher.core.mock.DummyKeywordEventPublisher;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,6 +34,7 @@ class BlogSearchServiceTest {
         this.blogSearchService = BlogSearchService.builder()
             .blogSource(blogSource)
             .blogStatisticCommandService(blogStatisticCommandService)
+            .keywordEventPublisher(new DummyKeywordEventPublisher())
             .build();
     }
 

@@ -1,0 +1,10 @@
+spring.cloud.stream:
+  kafka:
+    binder:
+      brokers: localhost:9092,localhost:9093,localhost:9094
+  bindings:
+    keywords-out-0:
+      binder: kafka
+      destination: keywords
+      content-type: text/plain
+      group: blog
