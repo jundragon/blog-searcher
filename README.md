@@ -116,5 +116,7 @@ GET /api/v1/blogs/statistics/popular
 
 ## 사용한 오픈 소스 와 사용 목적
 
-- QueryDSL : JPQL 동적 쿼리 목적
-- Resilience4j : 카카오 블로그 검색 API에 장애가 발생한 경우, 네이버 블로그 검색 API를 통해 데이터 제공
+- `lombok` : 개발 편의성
+- `QueryDSL` : JPQL 동적 쿼리 목적
+- `Resilience4j` : 카카오 블로그 검색 API에 장애가 발생한 경우, 네이버 블로그 검색 API를 통해 데이터 제공
+- `com.github.shin285:KOMORAN:3.3.9` : 문장 검색시 단어로 토큰화 하여 분석에 사용되도록 하기 위함
