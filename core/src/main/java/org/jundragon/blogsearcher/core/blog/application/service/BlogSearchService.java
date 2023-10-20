@@ -1,11 +1,11 @@
 package org.jundragon.blogsearcher.core.blog.application.service;
 
+import java.util.List;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.jundragon.blogsearcher.core.blog.application.event.KeywordCountEvent;
 import org.jundragon.blogsearcher.core.blog.application.event.KeywordEventPublisher;
 import org.jundragon.blogsearcher.core.blog.application.port.in.BlogSearchCommand;
-import org.jundragon.blogsearcher.core.blog.application.port.in.IncreaseKeywordCountCommand;
 import org.jundragon.blogsearcher.core.blog.application.port.out.BlogResponse;
 import org.jundragon.blogsearcher.core.blog.application.port.out.BlogSource;
 import org.jundragon.blogsearcher.core.blog.application.port.out.BlogSourceRequest;
@@ -25,21 +25,11 @@ public class BlogSearchService {
     @Transactional
     public BlogResponse search(BlogSearchCommand command) {
 
-        // 키워드 통계용 이벤트 발생
-        // TODO : Command Repository는 이벤트 큐를 통해서만 처리할 것
+        // 인기검색어 키워드 통계용 키워드 카운트 이벤트 발생
         KeywordCountEvent keywordCountEvent = KeywordCountEvent.builder()
-            .keyword(command.keyword())
-            .count(1)
+            .keywords(List.of(command.keyword()))
             .build();
-
         keywordEventPublisher.publish(keywordCountEvent);
-
-        // 인기검색어 키워드 통계용 키워드 카운트
-        blogStatisticCommandService.increaseKeywordCount(
-            IncreaseKeywordCountCommand.builder()
-                .keyword(command.keyword())
-                .build()
-        );
 
         // 블로그 소스 검색 응답
         Blog blog = blogSource.searchBlogDocuments(
