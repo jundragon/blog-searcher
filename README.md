@@ -8,21 +8,26 @@
 
 ```shell
 $ ./gradlew clean build
+$ docker-compose -f ./docker/docker-compose.yml up -d
 $ java -jar api/build/libs/api-1.0-SNAPSHOT.jar
 ```
+
+동시성 처리를 위해 도입한 kafka를 구동시켜야 합니다.
+
+*대시보드*
+kafka 토픽 확인 : http://localhost:9000
+
+h2 데이터베이스 확인 : http://localhost:8080/h2-console
 
 ## 프로젝트 소개
 
 ### 프로젝트 모듈 구성
 
-- `api` : 앱을 동작하기 위한 모듈 [core, blogsource, persistence 의존]
+- `api` : 앱을 동작하기 위한 모듈 [core, blogsource, persistence, consummer 의존성]
 - `core` : 도메인, 유스케이스 모듈 [독립 모듈, 의존관계 없음]
-- `blogsource-adapter` : http-client (webflux) [core 의존]
-- `persistence-adapter` : database (jpa, h2) [core 의존]
-
-*의존관계 (그림으로 표현하자)*
-
-(UML)
+- `blogsource-adapter` : http-client (webflux) [core 의존성]
+- `persistence-adapter` : database (jpa, h2) [core 의존성]
+- `consummer-adapter` : kafka 메시지 큐 [cord 의존성]
 
 ### 기능
 
@@ -114,9 +119,23 @@ GET /api/v1/blogs/statistics/popular
 
 ---
 
+## 고민한 내용들
+
+- 트래픽이 많고, 저장되어 있는 데이터가 많음을 염두에 둔 구현에 대한 고민
+    - 데이터가 많다고 가정한다면, Keyword 는 메모리 DB에 저장하기 어렵다고 판단함
+    - 동시성을 제어하기 위해 Kafka 메시지 큐로 키워드 수집을 비동기, 순차적으로 수행하도록 하였음
+    - Keyword에 긴문장이나 오타가 있다면 업무적으로 가치가 적은 데이터가 쌓일 것이라고 생각하여 문장을 단어 단위로 저장하는 기능을 추가 (이후 오타 보정기능 까지 추가한다면 좋을 것)
+- core 모듈의 *'도메인과 유스케이스'* 는 최대한 자바 코드만으로 테스트를 할 수 있게 노력 (스몰테스트)
+
+## 아쉬운 부분 (회고)
+
+- 멀티 모듈, 비동기에 대한 이해가 부족함을 느꼈습니다. (특히 테스트..)
+- 문제를 해결해가면서 구성이 점점 복잡해지는데, 통합 테스트를 간편히 할 수 있는 방법을 고민해야 될 것 같습니다. (외부 설정에 따라 깨지기 쉬운 테스트라서 관리가 어려울 것 같기도 하지만..)
+
 ## 사용한 오픈 소스 와 사용 목적
 
 - `lombok` : 개발 편의성
 - `QueryDSL` : JPQL 동적 쿼리 목적
 - `Resilience4j` : 카카오 블로그 검색 API에 장애가 발생한 경우, 네이버 블로그 검색 API를 통해 데이터 제공
 - `com.github.shin285:KOMORAN:3.3.9` : 문장 검색시 단어로 토큰화 하여 분석에 사용되도록 하기 위함
+- `io.projectreactor:reactor-test` : webflux 테스트
