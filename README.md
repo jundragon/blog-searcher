@@ -2,7 +2,7 @@
 
 ## 빌드 및 실행
 
-결과물 (Executable jar) : [api-1.0-SNAPSHOT.jar]()
+결과물 (Executable jar) : [api-1.0-SNAPSHOT.jar](https://github.com/jundragon/blog-searcher/blob/main/api-1.0-SNAPSHOT.jar)
 
 *빌드 및 실행 명령어*
 
