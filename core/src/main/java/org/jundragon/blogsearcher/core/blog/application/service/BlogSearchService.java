@@ -13,6 +13,7 @@ import org.jundragon.blogsearcher.core.blog.utils.TokenizeUtils;
 import org.jundragon.blogsearcher.core.common.annotation.FacadeService;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
+import reactor.core.publisher.SignalType;
 
 @FacadeService // 파사드 서비스는 다른 서비스에서 참조하지 않도록 주의
 @Builder
@@ -20,19 +21,19 @@ import reactor.core.publisher.Mono;
 public class BlogSearchService {
 
     private final BlogSource blogSource;
-    private final BlogStatisticCommandService blogStatisticCommandService;
     private final KeywordEventPublisher keywordEventPublisher;
+    private final BlogStatisticCommandService blogStatisticCommandService;
 
     @Transactional
     public Mono<BlogResponse> search(BlogSearchCommand command) {
 
-        // 인기검색어 키워드 통계용 키워드 카운트 이벤트 발생
-        // 키워드는 토큰화 하여 저장하여 수집한다.
-        List<String> tokenize = TokenizeUtils.tokenize(command.keyword());
-        KeywordCountEvent keywordCountEvent = KeywordCountEvent.builder()
-            .keywords(tokenize)
-            .build();
-        keywordEventPublisher.publish(keywordCountEvent);
+//        // 인기검색어 키워드 통계용 키워드 카운트 이벤트 발생
+//        // 키워드는 토큰화 하여 저장하여 수집한다.
+//        List<String> tokenize = TokenizeUtils.tokenize(command.keyword());
+//        KeywordCountEvent keywordCountEvent = KeywordCountEvent.builder()
+//            .keywords(tokenize)
+//            .build();
+//        keywordEventPublisher.publish(keywordCountEvent);
 
         // 블로그 소스 검색 응답
         return blogSource.searchBlogDocuments(
@@ -42,6 +43,21 @@ public class BlogSearchService {
                     .page(command.page())
                     .size(command.size())
                     .build())
-            .map(BlogResponse::from);
+            .map(BlogResponse::from).cache()
+            .doFinally(f -> {
+                if (f.equals(SignalType.ON_COMPLETE)) {
+                    publish(command.keyword());
+                }
+            });
+    }
+
+    private void publish(String message) {
+        // 인기검색어 키워드 통계용 키워드 카운트 이벤트 발생
+        // 키워드는 토큰화 하여 저장하여 수집한다.
+        List<String> tokenize = TokenizeUtils.tokenize(message);
+        KeywordCountEvent keywordCountEvent = KeywordCountEvent.builder()
+            .keywords(tokenize)
+            .build();
+        keywordEventPublisher.publish(keywordCountEvent);
     }
 }
