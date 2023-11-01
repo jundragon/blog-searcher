@@ -2,11 +2,10 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,gradle,intellij+all,windows,macos,visualstudiocode
 
 ### Querydsl
-/src/main/generated
+**/src/main/generated
 
 ### IntelliJ
 .idea/
-**/generated/
 
 ### Gradle
 .gradle/
