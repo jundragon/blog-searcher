@@ -5,8 +5,8 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.jundragon.blogsearcher.core.blog.application.port.in.BlogSearchCommand;
-import org.jundragon.blogsearcher.core.blog.application.port.out.BlogSource;
+import org.jundragon.blogsearcher.core.blog.application.port.input.BlogSearchCommand;
+import org.jundragon.blogsearcher.core.blog.application.port.output.BlogSource;
 import org.jundragon.blogsearcher.core.blog.domain.Blog;
 import org.jundragon.blogsearcher.core.blog.domain.BlogDocument;
 import org.jundragon.blogsearcher.core.blog.domain.BlogSearchSortType;
@@ -69,5 +69,5 @@ class BlogSearchServiceTest {
         Assertions.assertEquals(documents.size(), actual.block().getDocuments().size());
         Assertions.assertEquals(documents.get(0).contents(), actual.block().getDocuments().get(0).contents());
     }
-    
+
 }

@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
-import org.jundragon.blogsearcher.core.blog.application.port.out.BlogStatisticRepository;
+import org.jundragon.blogsearcher.core.blog.application.port.output.BlogStatisticRepository;
 import org.jundragon.blogsearcher.core.blog.domain.BlogKeyword;
 
 public class FakeBlogStatisticRepository implements BlogStatisticRepository {

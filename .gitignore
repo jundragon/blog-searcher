@@ -21,12 +21,6 @@ out/
 .AppleDouble
 .LSOverride
 
-### User Custom
-
-# Include
-!**/port/out
-!**/port/in
-
-# Exclude
+### Etc
 /testutils/**/*
 /.java-version

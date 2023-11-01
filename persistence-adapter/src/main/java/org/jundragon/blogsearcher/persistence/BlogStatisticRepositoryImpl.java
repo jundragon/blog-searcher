@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
-import org.jundragon.blogsearcher.core.blog.application.port.out.BlogStatisticRepository;
+import org.jundragon.blogsearcher.core.blog.application.port.output.BlogStatisticRepository;
 import org.jundragon.blogsearcher.core.blog.domain.BlogKeyword;
 import org.jundragon.blogsearcher.persistence.entity.BlogKeywordEntity;
 import org.springframework.stereotype.Component;

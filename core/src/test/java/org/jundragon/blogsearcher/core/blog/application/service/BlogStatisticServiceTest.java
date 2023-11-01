@@ -1,9 +1,9 @@
 package org.jundragon.blogsearcher.core.blog.application.service;
 
 import java.util.List;
-import org.jundragon.blogsearcher.core.blog.application.port.in.IncreaseKeywordCountCommand;
-import org.jundragon.blogsearcher.core.blog.application.port.in.SearchTopPopularKeywordCommand;
-import org.jundragon.blogsearcher.core.blog.application.port.out.BlogStatisticRepository;
+import org.jundragon.blogsearcher.core.blog.application.port.input.IncreaseKeywordCountCommand;
+import org.jundragon.blogsearcher.core.blog.application.port.input.SearchTopPopularKeywordCommand;
+import org.jundragon.blogsearcher.core.blog.application.port.output.BlogStatisticRepository;
 import org.jundragon.blogsearcher.core.blog.domain.BlogKeyword;
 import org.jundragon.blogsearcher.core.mock.FakeBlogStatisticRepository;
 import org.junit.jupiter.api.Assertions;

@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jundragon.blogsearcher.api.ApiResponse;
 import org.jundragon.blogsearcher.controller.search.request.BlogSearchRequest;
-import org.jundragon.blogsearcher.core.blog.application.port.out.BlogResponse;
+import org.jundragon.blogsearcher.core.blog.application.port.output.BlogResponse;
 import org.jundragon.blogsearcher.core.blog.application.service.BlogSearchService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

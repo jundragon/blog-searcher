@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.jundragon.blogsearcher.api.ApiResponse;
 import org.jundragon.blogsearcher.controller.statistics.request.TopPopularKeywordRequest;
 import org.jundragon.blogsearcher.controller.statistics.response.SearchTopPopularKeywordResponse;
-import org.jundragon.blogsearcher.core.blog.application.port.in.SearchTopPopularKeywordCommand;
+import org.jundragon.blogsearcher.core.blog.application.port.input.SearchTopPopularKeywordCommand;
 import org.jundragon.blogsearcher.core.blog.application.service.BlogStatisticService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

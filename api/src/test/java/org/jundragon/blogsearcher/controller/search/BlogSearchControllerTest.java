@@ -5,7 +5,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.List;
 import org.jundragon.blogsearcher.api.ApiResponse;
-import org.jundragon.blogsearcher.core.blog.application.port.out.BlogResponse;
+import org.jundragon.blogsearcher.core.blog.application.port.output.BlogResponse;
 import org.jundragon.blogsearcher.core.blog.application.service.BlogSearchService;
 import org.jundragon.blogsearcher.core.blog.domain.BlogDocument;
 import org.junit.jupiter.api.Assertions;

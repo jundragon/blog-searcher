@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.jundragon.blogsearcher.core.blog.application.event.KeywordCountEvent;
-import org.jundragon.blogsearcher.core.blog.application.port.in.IncreaseKeywordCountCommand;
+import org.jundragon.blogsearcher.core.blog.application.port.input.IncreaseKeywordCountCommand;
 import org.jundragon.blogsearcher.core.blog.application.service.BlogStatisticCommandService;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
