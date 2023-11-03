@@ -9,13 +9,13 @@ import org.jundragon.blogsearcher.core.blog.application.port.input.BlogSearchCom
 import org.jundragon.blogsearcher.core.blog.application.port.output.BlogResponse;
 import org.jundragon.blogsearcher.core.blog.application.port.output.BlogSource;
 import org.jundragon.blogsearcher.core.blog.application.port.output.BlogSourceRequest;
-import org.jundragon.blogsearcher.core.blog.utils.TokenizeUtils;
+import org.jundragon.blogsearcher.core.blog.utils.tokenizer.KeywordTokenizer;
 import org.jundragon.blogsearcher.core.common.annotation.FacadeService;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.SignalType;
 
-@FacadeService // 파사드 서비스는 다른 서비스에서 참조하지 않도록 주의
+@FacadeService
 @Builder
 @RequiredArgsConstructor
 public class BlogSearchService {
@@ -23,6 +23,7 @@ public class BlogSearchService {
     private final BlogSource blogSource;
     private final KeywordEventPublisher keywordEventPublisher;
     private final BlogStatisticCommandService blogStatisticCommandService;
+    private final KeywordTokenizer tokenizer;
 
     @Transactional
     public Mono<BlogResponse> search(BlogSearchCommand command) {
@@ -46,9 +47,9 @@ public class BlogSearchService {
     private void publish(String message) {
         // 인기검색어 키워드 통계용 키워드 카운트 이벤트 발생
         // 키워드는 토큰화 하여 저장하여 수집한다.
-        List<String> tokenize = TokenizeUtils.tokenize(message);
+        List<String> tokens = tokenizer.tokenize(message);
         KeywordCountEvent keywordCountEvent = KeywordCountEvent.builder()
-            .keywords(tokenize)
+            .keywords(tokens)
             .build();
         keywordEventPublisher.publish(keywordCountEvent);
     }

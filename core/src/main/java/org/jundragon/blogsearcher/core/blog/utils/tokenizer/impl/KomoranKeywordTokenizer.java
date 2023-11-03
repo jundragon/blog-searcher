@@ -1,20 +1,22 @@
-package org.jundragon.blogsearcher.core.blog.utils;
+package org.jundragon.blogsearcher.core.blog.utils.tokenizer.impl;
 
 import java.util.List;
 import kr.co.shineware.nlp.komoran.constant.DEFAULT_MODEL;
 import kr.co.shineware.nlp.komoran.core.Komoran;
 import kr.co.shineware.nlp.komoran.model.Token;
 import lombok.Getter;
+import org.jundragon.blogsearcher.core.blog.utils.tokenizer.KeywordTokenizer;
 
-public abstract class TokenizeUtils {
+public class KomoranKeywordTokenizer implements KeywordTokenizer {
 
-    private final static Komoran engine;
+    private final Komoran engine;
 
-    static {
-        engine = new Komoran(DEFAULT_MODEL.LIGHT);
+    public KomoranKeywordTokenizer() {
+        this.engine = new Komoran(DEFAULT_MODEL.LIGHT);
     }
 
-    public static List<String> tokenize(String sentance) {
+    @Override
+    public List<String> tokenize(String sentance) {
         return engine.analyze(sentance).getTokenList().stream()
             .filter(token -> isNoun(token.getPos()))
             .map(Token::getMorph).toList();
