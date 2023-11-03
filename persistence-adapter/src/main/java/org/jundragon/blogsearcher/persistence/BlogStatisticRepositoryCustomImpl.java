@@ -30,7 +30,7 @@ public class BlogStatisticRepositoryCustomImpl extends QuerydslRepositorySupport
     @Override
     public List<BlogKeywordEntity> getKeywordOrderByCountDescTop(Long top) {
         return jpaQueryFactory.selectFrom(blogKeywordEntity)
-            .orderBy(blogKeywordEntity.count.desc())
+            .orderBy(blogKeywordEntity.count.desc(), blogKeywordEntity.modifiedAt.desc())
             .limit(top)
             .fetch();
     }

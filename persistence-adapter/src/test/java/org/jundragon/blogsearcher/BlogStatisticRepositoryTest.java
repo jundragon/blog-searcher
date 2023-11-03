@@ -35,4 +35,13 @@ class BlogStatisticRepositoryTest extends MiddleTest {
         Assertions.assertFalse(actual.isEmpty());
         Assertions.assertEquals("아그리콜라", actual.get(0).getKeyword());
     }
+
+    @Test
+    void 인기검색어조회_같은_COUNT라면_최근의_데이터가_상위에_노출된다() {
+        List<BlogKeywordEntity> actual = blogStatisticJpaRepository.getKeywordOrderByCountDescTop(
+            10L);
+
+        Assertions.assertFalse(actual.isEmpty());
+        Assertions.assertEquals("오부족2", actual.get(1).getKeyword());
+    }
 }

@@ -27,7 +27,7 @@ import org.jundragon.blogsearcher.core.blog.domain.BlogKeyword;
     }
 )
 @Entity
-public class BlogKeywordEntity {
+public class BlogKeywordEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,22 +1,13 @@
-INSERT INTO blog_keyword (id, count, keyword)
-VALUES (1, 11, '테라포밍마스');
-INSERT INTO blog_keyword (id, count, keyword)
-VALUES (2, 22, '아를의평원');
-INSERT INTO blog_keyword (id, count, keyword)
-VALUES (3, 33, '르아브르');
-INSERT INTO blog_keyword (id, count, keyword)
-VALUES (4, 44, '글룸헤이븐');
-INSERT INTO blog_keyword (id, count, keyword)
-VALUES (5, 55, '듄');
-INSERT INTO blog_keyword (id, count, keyword)
-VALUES (6, 66, '엘도라도');
-INSERT INTO blog_keyword (id, count, keyword)
-VALUES (7, 77, '정령섬');
-INSERT INTO blog_keyword (id, count, keyword)
-VALUES (8, 88, '아컴호러');
-INSERT INTO blog_keyword (id, count, keyword)
-VALUES (9, 99, '마블');
-INSERT INTO blog_keyword (id, count, keyword)
-VALUES (10, 101, '오부족');
-INSERT INTO blog_keyword (id, count, keyword)
-VALUES (11, 102, '아그리콜라');
+INSERT INTO blog_keyword (id, count, keyword, created_at, modified_at)
+VALUES (1, 11, '테라포밍마스', '2023-11-03 16:16:11', '2023-11-03 16:16:11'),
+       (2, 22, '아를의평원', '2023-11-03 16:16:11', '2023-11-03 16:16:11'),
+       (3, 33, '르아브르', '2023-11-03 16:16:11', '2023-11-03 16:16:11'),
+       (4, 44, '글룸헤이븐', '2023-11-03 16:16:11', '2023-11-03 16:16:11'),
+       (5, 55, '듄', '2023-11-03 16:16:11', '2023-11-03 16:16:11'),
+       (6, 66, '엘도라도', '2023-11-03 16:16:11', '2023-11-03 16:16:11'),
+       (7, 77, '정령섬', '2023-11-03 16:16:11', '2023-11-03 16:16:11'),
+       (8, 88, '아컴호러', '2023-11-03 16:16:11', '2023-11-03 16:16:11'),
+       (9, 99, '마블', '2023-11-03 16:16:11', '2023-11-03 16:16:11'),
+       (10, 101, '오부족', '2023-11-03 16:16:11', '2023-11-03 16:16:11'),
+       (11, 101, '오부족2', '2023-11-03 16:16:11', '2023-11-03 16:20:11'),
+       (12, 102, '아그리콜라', '2023-11-03 16:16:11', '2023-11-03 16:16:11');
