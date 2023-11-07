@@ -1,7 +1,7 @@
-package org.jundragon.blogsearcher.core.blog.utils.tokenizer.impl;
+package org.jundragon.blogsearcher.tokenizer.impl;
 
 import java.util.List;
-import org.jundragon.blogsearcher.core.blog.utils.tokenizer.KeywordTokenizer;
+import org.jundragon.blogsearcher.tokenizer.KeywordTokenizer;
 
 public class DefaultKeywordTokenizer implements KeywordTokenizer {
 

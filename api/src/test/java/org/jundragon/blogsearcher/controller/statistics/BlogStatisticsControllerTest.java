@@ -5,8 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
+@MockBean(JpaMetamodelMappingContext.class)
 @WebFluxTest(controllers = BlogStatisticsController.class)
 class BlogStatisticsControllerTest {
 

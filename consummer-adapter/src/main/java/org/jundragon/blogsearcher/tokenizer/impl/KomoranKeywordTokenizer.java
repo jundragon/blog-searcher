@@ -1,11 +1,11 @@
-package org.jundragon.blogsearcher.core.blog.utils.tokenizer.impl;
+package org.jundragon.blogsearcher.tokenizer.impl;
 
 import java.util.List;
 import kr.co.shineware.nlp.komoran.constant.DEFAULT_MODEL;
 import kr.co.shineware.nlp.komoran.core.Komoran;
 import kr.co.shineware.nlp.komoran.model.Token;
 import lombok.Getter;
-import org.jundragon.blogsearcher.core.blog.utils.tokenizer.KeywordTokenizer;
+import org.jundragon.blogsearcher.tokenizer.KeywordTokenizer;
 
 public class KomoranKeywordTokenizer implements KeywordTokenizer {
 
