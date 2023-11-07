@@ -10,7 +10,7 @@ services:
   kafka-1:
     image: confluentinc/cp-kafka:7.2.6
     ports:
-      - '9092:9092'
+      - "${KAFKA1_BINDING_PORT}:9092"
     depends_on:
       - zookeeper-1
     environment:
@@ -24,7 +24,7 @@ services:
   kafka-2:
     image: confluentinc/cp-kafka:7.2.6
     ports:
-      - '9093:9093'
+      - "${KAFKA2_BINDING_PORT}:9093"
     depends_on:
       - zookeeper-1
     environment:
@@ -38,7 +38,7 @@ services:
   kafka-3:
     image: confluentinc/cp-kafka:7.2.6
     ports:
-      - '9094:9094'
+      - "${KAFKA3_BINDING_PORT}:9094"
     depends_on:
       - zookeeper-1
     environment:
@@ -53,9 +53,18 @@ services:
     image: provectuslabs/kafka-ui
     container_name: kafka-ui
     ports:
-      - "9000:8080"
+      - "${KAFKA_UI_BINDING_PORT}:8080"
     restart: always
     environment:
       - KAFKA_CLUSTERS_0_NAME=local
       - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka-1:29092,kafka-2:29093,kafka-3:29094
       - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper-1:22181
+  redis: # container name
+    image: redis:6.2.6-alpine
+    ports: # 바인딩할 포트:내부 포트
+      - ${REDIS_BINDING_PORT}:${REDIS_PORT}
+    command: redis-server /usr/local/etc/redis/redis.conf
+    volumes: # 마운트할 볼륨 설정
+      - ${REDIS_DATA_PATH}:/data
+      - ${REDIS_DEFAULT_CONFIG_FILE}:/usr/local/etc/redis/redis.conf
+    restart: always
