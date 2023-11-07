@@ -3,12 +3,14 @@ package org.jundragon.blogsearcher.core.blog.domain;
 import java.util.Objects;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 public class BlogKeyword {
 
-    private final Long id;
-    private final String keyword;
+    private Long id;
+    private String keyword;
     private Long count;
 
     @Builder
