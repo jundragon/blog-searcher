@@ -3,13 +3,17 @@ spring.cloud.stream:
     binder:
       brokers: localhost:9092,localhost:9093,localhost:9094
   bindings:
+    error:
+      destination: myErrors
     keywords-out-0:
       binder: kafka
       destination: keywords
       content-type: text/plain
       group: blog
+      producer:
+        error-channel-enabled: true
       consumer:
-        max-attempts: 3
-        back-off-initial-interval: 1000
-        back-off-multiplier: 2.0
-        back-off-max-interval: 5000
+        max-attempts: 3 #최대시도횟수 = 첫시도(1)+재시도횟수
+        back-off-initial-interval: 1000 #첫 재시도시 몇초 기다릴지 (ms)
+        back-off-multiplier: 2.0 #몇 배수로 재시도 시간을 늘릴지 (Double Type)
+        back-off-max-interval: 5000 #최대 시도 시간 (배수로 시간이 증가해도 이 최대값이상으로 늘지 않음)

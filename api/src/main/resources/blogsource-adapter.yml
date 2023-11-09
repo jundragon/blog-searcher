@@ -19,13 +19,16 @@ resilience4j:
         base-config: default
     configs:
       default:
-        sliding-window-size: 1
-        failure-rate-threshold: 75
-        automatic-transition-from-open-to-half-open-enabled: true
-        permitted-number-of-calls-in-half-open-state: 4
-        wait-duration-in-open-state: 5s
+        # 서킷 조정을 타임 아웃으로 하는 옵션
+        slowCallRateThreshold: 100 # (Default 100)
+        slowCallDurationThreshold: 5s # 60초 보다 짧게 조정 (Default 60000 [ms])
+        # 서킷 조정을 실패율로 하는 옵션
+        failure-rate-threshold: 50 # (Default 50)
+        # 호출에 대한 슬라이딩 윈도우
         sliding-window-type: COUNT_BASED
-    timelimiter:
-      instances:
-        blogsource:
-          timeout-duration: 1s
+        sliding-window-size: 10 # (Default 100)
+
+        automatic-transition-from-open-to-half-open-enabled: false # true 로 설정하면 서킷의 상태를 모니터링하는 스레드가 추가로 필요함 (Default false)
+        wait-duration-in-open-state: 60s # OPEN -> HALF_OPEN 전환하기까지 시간 (Default 60000 [ms])
+        permitted-number-of-calls-in-half-open-state: 4 # 회로가 반-개방 상태일 때 허용 요청 수 (Default 4)
+        max-wait-duration-in-half-open-state: 5s # 회로가 반-개방 상태일 때, 처리하는 요청의 최대 타임아웃 (Default 0 [ms])
