@@ -1,6 +1,5 @@
 package org.jundragon.blogsearcher.core.blog.application.service;
 
-import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.jundragon.blogsearcher.core.blog.application.event.KeywordCountEvent;
 import org.jundragon.blogsearcher.core.blog.application.event.KeywordEventPublisher;
@@ -14,13 +13,11 @@ import reactor.core.publisher.Mono;
 import reactor.core.publisher.SignalType;
 
 @FacadeService
-@Builder
 @RequiredArgsConstructor
 public class BlogSearchService {
 
     private final BlogSource blogSource;
     private final KeywordEventPublisher keywordEventPublisher;
-    private final BlogStatisticCommandService blogStatisticCommandService;
 
     @Transactional
     public Mono<BlogResponse> search(BlogSearchCommand command) {
