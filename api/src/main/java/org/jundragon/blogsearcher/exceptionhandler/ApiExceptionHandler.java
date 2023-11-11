@@ -2,9 +2,9 @@ package org.jundragon.blogsearcher.exceptionhandler;
 
 import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
-import org.jundragon.blogsearcher.api.ApiResponse;
 import org.jundragon.blogsearcher.error.ErrorCodeInterface;
 import org.jundragon.blogsearcher.exception.ApiException;
+import org.jundragon.blogsearcher.response.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
