@@ -3,8 +3,8 @@ package org.jundragon.blogsearcher.persistence.event;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import org.jundragon.blogsearcher.core.blog.application.event.BlogStatisticEvent;
-import org.jundragon.blogsearcher.core.blog.application.event.KeywordEventPublisher;
+import org.jundragon.blogsearcher.core.blog.application.port.output.event.BlogStatisticEvent;
+import org.jundragon.blogsearcher.core.blog.application.port.output.event.KeywordEventPublisher;
 import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.stereotype.Component;
 

@@ -1,12 +1,12 @@
 package org.jundragon.blogsearcher.core.blog.application.service;
 
 import lombok.RequiredArgsConstructor;
-import org.jundragon.blogsearcher.core.blog.application.event.KeywordCountEvent;
-import org.jundragon.blogsearcher.core.blog.application.event.KeywordEventPublisher;
-import org.jundragon.blogsearcher.core.blog.application.port.input.BlogSearchCommand;
-import org.jundragon.blogsearcher.core.blog.application.port.output.BlogResponse;
+import org.jundragon.blogsearcher.core.blog.application.port.output.event.KeywordCountEvent;
+import org.jundragon.blogsearcher.core.blog.application.port.output.event.KeywordEventPublisher;
+import org.jundragon.blogsearcher.core.blog.application.port.input.dto.BlogSearchCommand;
+import org.jundragon.blogsearcher.core.blog.application.port.output.dto.BlogResponse;
 import org.jundragon.blogsearcher.core.blog.application.port.output.BlogSource;
-import org.jundragon.blogsearcher.core.blog.application.port.output.BlogSourceRequest;
+import org.jundragon.blogsearcher.core.blog.application.port.output.dto.BlogSourceRequest;
 import org.jundragon.blogsearcher.core.common.annotation.FacadeService;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;

@@ -3,7 +3,7 @@ package org.jundragon.blogsearcher.core.blog.application.service;
 import java.util.Optional;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
-import org.jundragon.blogsearcher.core.blog.application.port.input.IncreaseKeywordCountCommand;
+import org.jundragon.blogsearcher.core.blog.application.port.input.dto.IncreaseKeywordCountCommand;
 import org.jundragon.blogsearcher.core.blog.application.port.output.BlogStatisticRepository;
 import org.jundragon.blogsearcher.core.blog.domain.BlogKeyword;
 import org.springframework.stereotype.Service;

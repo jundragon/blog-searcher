@@ -1,4 +1,4 @@
-package org.jundragon.blogsearcher.core.blog.application.port.output;
+package org.jundragon.blogsearcher.core.blog.application.port.output.dto;
 
 import lombok.Builder;
 import org.jundragon.blogsearcher.core.blog.domain.BlogSearchSortType;

@@ -4,7 +4,7 @@ import java.util.Objects;
 import javax.validation.constraints.NotBlank;
 import lombok.Builder;
 import lombok.Getter;
-import org.jundragon.blogsearcher.core.blog.application.port.input.BlogSearchCommand;
+import org.jundragon.blogsearcher.core.blog.application.port.input.dto.BlogSearchCommand;
 import org.jundragon.blogsearcher.core.blog.domain.BlogSearchSortType;
 
 @Builder

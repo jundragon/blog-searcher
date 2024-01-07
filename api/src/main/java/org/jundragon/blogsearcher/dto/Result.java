@@ -1,4 +1,4 @@
-package org.jundragon.blogsearcher.api;
+package org.jundragon.blogsearcher.dto;
 
 import lombok.Builder;
 import org.jundragon.blogsearcher.error.ErrorCodeInterface;

@@ -1,4 +1,4 @@
-package org.jundragon.blogsearcher.api;
+package org.jundragon.blogsearcher.dto;
 
 import org.jundragon.blogsearcher.error.ErrorCodeInterface;
 

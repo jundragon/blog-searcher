@@ -2,7 +2,7 @@ package org.jundragon.blogsearcher.exceptionhandler;
 
 import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
-import org.jundragon.blogsearcher.api.ApiResponse;
+import org.jundragon.blogsearcher.dto.ApiResponse;
 import org.jundragon.blogsearcher.error.ErrorCodeInterface;
 import org.jundragon.blogsearcher.exception.ApiException;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package org.jundragon.blogsearcher.core.blog.application.port.input;
+package org.jundragon.blogsearcher.core.blog.application.port.input.dto;
 
 import java.util.Objects;
 import lombok.Builder;

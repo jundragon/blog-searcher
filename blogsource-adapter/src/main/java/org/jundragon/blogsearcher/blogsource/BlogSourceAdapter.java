@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.jundragon.blogsearcher.blogsource.factory.BlogSourceOpenApiClient;
 import org.jundragon.blogsearcher.blogsource.request.BlogSearchRequest;
 import org.jundragon.blogsearcher.core.blog.application.port.output.BlogSource;
-import org.jundragon.blogsearcher.core.blog.application.port.output.BlogSourceRequest;
+import org.jundragon.blogsearcher.core.blog.application.port.output.dto.BlogSourceRequest;
 import org.jundragon.blogsearcher.core.blog.domain.Blog;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
