@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class KeywordEventPublisherImpl implements KeywordEventPublisher {
+public class StreamBridgeKeywordEventPublisher implements KeywordEventPublisher {
 
     public static final String BIND = "keywords-out-0";
     private final ObjectMapper objectMapper;
