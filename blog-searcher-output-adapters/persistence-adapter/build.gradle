@@ -19,7 +19,7 @@ dependencyManagement {
 }
 
 dependencies {
-    implementation project(":core")
+    implementation project(":blog-searcher-core")
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

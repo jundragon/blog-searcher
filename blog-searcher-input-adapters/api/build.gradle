@@ -21,10 +21,10 @@ dependencyManagement {
 }
 
 dependencies {
-    implementation project(":core")
-    implementation project(":output-adapters:persistence-adapter")
-    implementation project(":output-adapters:blogsource-adapter")
-    implementation project(":input-adapters:consummer-adapter")
+    implementation project(":blog-searcher-core")
+    implementation project(":blog-searcher-output-adapters:persistence-adapter")
+    implementation project(":blog-searcher-output-adapters:blogsource-adapter")
+    implementation project(":blog-searcher-input-adapters:consummer-adapter")
 
     implementation 'org.projectlombok:lombok:1.18.22'
     compileOnly 'org.projectlombok:lombok'
